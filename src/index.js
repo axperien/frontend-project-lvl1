@@ -1,8 +1,18 @@
-import readlineSync from 'readline-sync';
+import brainGameEven from './games/index-even.js';
+import brainGameCalc from './games/index-calc.js';
 
-const answerUserName = () => {
-  const userName = readlineSync.question('May I have your name?: ');
-  console.log(`Hello, ${userName}!`);
+const app = (gameName) => {
+  console.log('Welcome to the Brain Games!');
+  switch (gameName) {
+    case 'even':
+      brainGameEven();
+      break;
+    case 'calc':
+      brainGameCalc();
+      break;
+    default:
+      console.log('Game not found. Coming soon. Try later.');
+  }
 };
 
-export default answerUserName;
+export default app;
