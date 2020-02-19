@@ -18,6 +18,4 @@ extends:
 rules:
   no-console: 0
   import/extensions: 0 # FIXME: remove when rule will be adjusted for new nodejs version
-
-- name: ESLint checker
-  uses: ninosaurus/eslint-check@v5.3.1
+  
