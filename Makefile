@@ -1,4 +1,4 @@
-install: npm install
+install: install-deps
 
 start: 
 		npx node bin/brain-games.js
