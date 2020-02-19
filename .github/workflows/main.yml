@@ -17,11 +17,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: npm install, build, and test
+      - name: npm install
         run: |
-          make install
-          make build
-          make test
+          make install          
         env:
           CI: true
       - name: Run linter
