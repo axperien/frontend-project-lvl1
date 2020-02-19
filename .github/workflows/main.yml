@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - name: ESLint checker
+      uses: ninosaurus/eslint-check@v5.3.1
+      with:
+        # github security token
+        repo-token: 
+        # relative directory to node_modules
+        custom-directory: 
+        # relative path to eslint config file eg. .eslintrc
+        eslint-config-path: 
