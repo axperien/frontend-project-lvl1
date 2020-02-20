@@ -1,5 +1,6 @@
-import brainGameEven from './games/index-even.js';
-import brainGameCalc from './games/index-calc.js';
+import brainGameEven from './games/even.js';
+import brainGameCalc from './games/calc.js';
+import brainGameGcd from './games/gcd.js';
 
 const app = (gameName) => {
   console.log('Welcome to the Brain Games!');
@@ -9,6 +10,9 @@ const app = (gameName) => {
       break;
     case 'calc':
       brainGameCalc();
+      break;
+    case 'gcd':
+      brainGameGcd();
       break;
     default:
       console.log('Game not found. Coming soon. Try later.');
