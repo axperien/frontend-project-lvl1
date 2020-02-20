@@ -1,17 +1,19 @@
-// eslint no-use-before-define: ["error", { "variables": false }]
-
 import readlineSync from 'readline-sync';
 import answerUserName from '../components/answerUserName.js';
 import startMessage from '../components/startMessage.js';
+import correctMessage from '../components/correctMessage.js';
+import finishMessage from '../components/finishMessage.js';
 import variables from '../variables.js';
 
 let currentNumber;
+let counterQuestions = 0;
+const numberOfQuestions = 3;
 
 const checkEvenFalse = () => currentNumber % 2 !== 0;
 
 const checkEvenTrue = () => currentNumber % 2 === 0;
 
-const getAnswer = () => {
+const askQuestion = () => {
   currentNumber = Math.floor(Math.random() * 50);
   console.log(currentNumber);
   const answer = readlineSync.question('Your answer: ');
@@ -20,12 +22,12 @@ const getAnswer = () => {
 
 const checkAnswer = (answer) => {
   if ((answer === 'yes' && checkEvenTrue()) || (answer === 'no' && checkEvenFalse())) {
-    console.log('Correct!');
-    variables.counterQuestions += 1;
-    if (variables.counterQuestions < 3) {
-      getAnswer();
+    correctMessage();
+    counterQuestions += 1;
+    if (counterQuestions < numberOfQuestions) {
+      askQuestion();
     } else {
-      console.log(`Congratulations, ${variables.userName}!`);
+      finishMessage();
     }
   } else {
     console.log(`"${answer}" is wrong answer ;(. Correct answer was "${(checkEvenTrue()) ? 'yes' : 'no'}". \nLet's try again, ${variables.userName}!`);
@@ -35,7 +37,7 @@ const checkAnswer = (answer) => {
 const game = () => {
   variables.userName = answerUserName();
   startMessage('Answer "yes" if the number is even, otherwise answer "no".');
-  getAnswer();
+  askQuestion();
 };
 
 export default game;

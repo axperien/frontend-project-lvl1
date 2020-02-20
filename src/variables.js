@@ -1,4 +1,5 @@
-export default () => ({
+export default {
   userName: '',
-  counterQuestions: 3,
-});
+  counterQuestions: 0,
+  numberOfQuestions: 3,
+};

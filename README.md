@@ -2,4 +2,6 @@
 
 # Первый проект hexlet "Игры разума"
 
-### [Brain-even](https://asciinema.org/a/mSiXObhXVqI6HbdZxup2DX9uV)
+### asciinema 
+- [asciinema brain-even](https://asciinema.org/a/mSiXObhXVqI6HbdZxup2DX9uV)
+- [asciinema brain-calc](https://asciinema.org/a/3Qo0lhQmweHldZ76SWnF5gFqX)
