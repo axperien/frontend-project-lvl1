@@ -1,4 +1,4 @@
-![](https://github.com/axperien/frontend-project-lvl1/workflows/.github/workflows/main.yml/badge.svg?event=push) [![Maintainability](https://api.codeclimate.com/v1/badges/54f0b033d726a512ba5f/maintainability)](https://codeclimate.com/github/axperien/frontend-project-lvl1/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/54f0b033d726a512ba5f/test_coverage)](https://codeclimate.com/github/axperien/frontend-project-lvl1/test_coverage)
+![](https://github.com/axperien/frontend-project-lvl1/workflows/.github/workflows/main.yml/badge.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/54f0b033d726a512ba5f/maintainability)](https://codeclimate.com/github/axperien/frontend-project-lvl1/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/54f0b033d726a512ba5f/test_coverage)](https://codeclimate.com/github/axperien/frontend-project-lvl1/test_coverage)
 
 # Первый проект hexlet "Игры разума"
 
