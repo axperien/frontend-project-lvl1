@@ -1,43 +1,15 @@
-import readlineSync from 'readline-sync';
-import answerUserName from '../components/answerUserName.js';
-import startMessage from '../components/startMessage.js';
-import correctMessage from '../components/correctMessage.js';
-import finishMessage from '../components/finishMessage.js';
-import variables from '../variables.js';
+import random from '../components/randNumber.js';
+import game from '../index.js';
 
-let currentNumber;
-let counterQuestions = 0;
-const numberOfQuestions = 3;
+const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
+const isEven = (num) => num % 2 === 0;
 
-const checkEvenFalse = () => currentNumber % 2 !== 0;
-
-const checkEvenTrue = () => currentNumber % 2 === 0;
-
-const askQuestion = () => {
-  currentNumber = Math.floor(Math.random() * 50);
-  console.log(currentNumber);
-  const answer = readlineSync.question('Your answer: ');
-  checkAnswer(answer);
+const data = () => {
+  const number = random(50);
+  const answer = (isEven(number)) ? 'yes' : 'no';
+  return [number, answer];
 };
 
-const checkAnswer = (answer) => {
-  if ((answer === 'yes' && checkEvenTrue()) || (answer === 'no' && checkEvenFalse())) {
-    correctMessage();
-    counterQuestions += 1;
-    if (counterQuestions < numberOfQuestions) {
-      askQuestion();
-    } else {
-      finishMessage();
-    }
-  } else {
-    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${(checkEvenTrue()) ? 'yes' : 'no'}". \nLet's try again, ${variables.userName}!`);
-  }
+export default () => {
+  game(rule, data);
 };
-
-const game = () => {
-  variables.userName = answerUserName();
-  startMessage('Answer "yes" if the number is even, otherwise answer "no".');
-  askQuestion();
-};
-
-export default game;

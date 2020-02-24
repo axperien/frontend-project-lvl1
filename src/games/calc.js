@@ -1,62 +1,35 @@
-import readlineSync from 'readline-sync';
-import answerUserName from '../components/answerUserName.js';
-import startMessage from '../components/startMessage.js';
-import correctMessage from '../components/correctMessage.js';
-import finishMessage from '../components/finishMessage.js';
-import variables from '../variables.js';
+import random from '../components/randNumber.js';
+import game from '../index.js';
+import { sum, diff, multi } from '../components/math.js';
 
-
-let number1;
-let number2;
-let counterQuestions = 0;
-const numberOfQuestions = 3;
 const operationOptions = ['-', '+', '*'];
-let operation;
 
-const sum = () => number1 + number2;
-const diff = () => number1 - number2;
-const multi = () => number1 * number2;
+const rule = 'What is the result of the expression?';
 
-const checkResult = () => getResult(operation);
-
-const getResult = (operationName) => {
+const getResult = (num1, num2, operationName) => {
   switch (operationName) {
     case '+':
-      return sum();
+      return sum(num1, num2);
     case '-':
-      return diff();
+      return diff(num1, num2);
     default:
-      return multi();
+      return multi(num1, num2);
   }
 };
 
-const askQuestion = () => {
-  number1 = Math.floor(Math.random() * 10);
-  number2 = Math.floor(Math.random() * 10);
-  operation = operationOptions[Math.floor(Math.random() * operationOptions.length)];
-  console.log(`${number1} ${operation} ${number2}`);
-  const answer = readlineSync.question('Your answer: ');
-  checkAnswer(answer);
+const data = () => {
+  const number1 = random(20);
+  const number2 = random(20);
+
+  const operation = operationOptions[Math.floor(Math.random() * operationOptions.length)];
+  const expression = `${number1} ${operation} ${number2}`;
+
+  const checkResult = () => getResult(number1, number2, operation);
+
+  const answer = `${checkResult()}`;
+  return [expression, answer];
 };
 
-const checkAnswer = (answer) => {
-  if (+answer === checkResult()) {
-    correctMessage();
-    counterQuestions += 1;
-    if (counterQuestions < numberOfQuestions) {
-      askQuestion();
-    } else {
-      finishMessage();
-    }
-  } else {
-    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${getResult(operation)}". \nLet's try again, ${variables.userName}!`);
-  }
+export default () => {
+  game(rule, data);
 };
-
-const calc = () => {
-  variables.userName = answerUserName();
-  startMessage('What is the result of the expression?');
-  askQuestion();
-};
-
-export default calc;

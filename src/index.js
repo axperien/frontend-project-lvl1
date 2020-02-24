@@ -1,30 +1,25 @@
-import brainGameEven from './games/even.js';
-import brainGameCalc from './games/calc.js';
-import brainGameGcd from './games/gcd.js';
-import brainGameProgression from './games/progression.js';
-import brainGamePrime from './games/prime.js';
+import readlineSync from 'readline-sync';
+import greetingUser from './components/answerUserName.js';
 
-const app = (gameName) => {
+const stepsCount = 3;
+
+export default (rule, data) => {
   console.log('Welcome to the Brain Games!');
-  switch (gameName) {
-    case 'even':
-      brainGameEven();
-      break;
-    case 'calc':
-      brainGameCalc();
-      break;
-    case 'gcd':
-      brainGameGcd();
-      break;
-    case 'progression':
-      brainGameProgression();
-      break;
-    case 'prime':
-      brainGamePrime();
-      break;
-    default:
-      console.log('Game not found. Coming soon. Try later.');
-  }
-};
+  const userName = greetingUser();
+  console.log(rule);
 
-export default app;
+  for (let step = 0; step < stepsCount; step += 1) {
+    const [question, correctAnswer] = data();
+    console.log(question);
+    const answer = readlineSync.question('Your answer: ');
+
+    if (answer !== correctAnswer) {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${(correctAnswer)}". \nLet's try again, ${userName}!`);
+      return;
+    }
+
+    console.log('Correct!');
+  }
+
+  console.log(`Congratulations, ${userName}!`);
+};
