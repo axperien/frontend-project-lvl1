@@ -5,25 +5,28 @@ const rule = 'What number is missing in the progression?';
 
 const length = 10;
 
-const getProgression = (start, d) => {
+const getProgression = (start, range) => {
   const progression = [];
   for (let i = 0; i < length; i += 1) {
-    progression.push(start + d * i);
+    progression.push(start + range * i);
   }
   return progression;
 };
 
-const data = () => {
-  const progression = getProgression(random(20), random(5) + 1);
-  const randomIndex = random(progression.length);
+const getGameData = () => {
+  const progressionStartNumber = random(0, 20);
+  const progressionRange = random(1, 5);
+  const progression = getProgression(progressionStartNumber, progressionRange);
+  const randomIndex = random(0, progression.length);
 
   const temp = [...progression];
   temp[randomIndex] = '..';
 
-  const answer = `${progression[randomIndex]}`;
-  return [`${temp.join(' ')}`, answer];
+  const answer = progression[randomIndex];
+  const question = `${temp.join(' ')}`;
+  return [question, answer];
 };
 
 export default () => {
-  game(rule, data);
+  game(rule, getGameData);
 };

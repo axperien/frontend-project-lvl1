@@ -2,7 +2,7 @@ import random from '../components/randNumber.js';
 import game from '../index.js';
 import { sum, diff, multi } from '../components/math.js';
 
-const operationOptions = ['-', '+', '*'];
+const operations = ['-', '+', '*'];
 
 const rule = 'What is the result of the expression?';
 
@@ -17,19 +17,17 @@ const getResult = (num1, num2, operationName) => {
   }
 };
 
-const data = () => {
-  const number1 = random(20);
-  const number2 = random(20);
-
-  const operation = operationOptions[Math.floor(Math.random() * operationOptions.length)];
+const getGameData = () => {
+  const number1 = random(0, 20);
+  const number2 = random(0, 20);
+  const operationRandomIndex = random(0, operations.length);
+  const operation = operations[operationRandomIndex];
   const expression = `${number1} ${operation} ${number2}`;
 
-  const checkResult = () => getResult(number1, number2, operation);
-
-  const answer = `${checkResult()}`;
+  const answer = getResult(number1, number2, operation);
   return [expression, answer];
 };
 
 export default () => {
-  game(rule, data);
+  game(rule, getGameData);
 };
