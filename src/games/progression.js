@@ -17,13 +17,13 @@ const getGameData = () => {
   const progressionStartNumber = random(0, 20);
   const progressionRange = random(1, 5);
   const progression = getProgression(progressionStartNumber, progressionRange);
-  const randomIndex = random(0, progression.length);
+  const randomIndex = random(0, progression.length - 1);
 
   const temp = [...progression];
   temp[randomIndex] = '..';
 
   const answer = progression[randomIndex];
-  const question = `${temp.join(' ')}`;
+  const question = temp.join(' ');
   return [question, answer];
 };
 

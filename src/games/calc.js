@@ -20,7 +20,7 @@ const getResult = (num1, num2, operationName) => {
 const getGameData = () => {
   const number1 = random(0, 20);
   const number2 = random(0, 20);
-  const operationRandomIndex = random(0, operations.length);
+  const operationRandomIndex = random(0, operations.length - 1);
   const operation = operations[operationRandomIndex];
   const expression = `${number1} ${operation} ${number2}`;
 
